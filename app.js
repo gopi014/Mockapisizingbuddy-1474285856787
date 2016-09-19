@@ -108,6 +108,10 @@ app.delete('/api/teams/:teamId/members/:memberId',function(req,res){
 	members:["supsanga@in.ibm.com","jissimon@in.ibm.com","anamboot@in.ibm.com"]
 });
 });
+//4. API to get Sizing Properties
+app.get('/api/hana/properties',function(req,res){
+	res.send('{ "hanaProps" : { "minMemory" : "5" , "maxMemory" : "20" , "minSaps" :  "01" , "maxSaps" :  "1000" , "storageFactor" : "2" , "hanaReleases" : ["SPS11"], "sapReleases" : ["6.7"]} , "industries" : [ "Communications" ], "countries" : [{ "countryCode" : "IN" , "country" : "INDIA" }]}');
+}); 
 app.post('/api/teams/:teamId/members',function(req,res){
 	res.send({teamId :  1,
 	team :  "TEAM A" ,
