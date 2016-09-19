@@ -6,8 +6,10 @@
 		"start": "node app.js"
 	},
 	"dependencies": {
-		"express": "4.13.x",
-		"cfenv": "1.0.x"
+		"express": "^4.14.0",
+	"body-parser":"*",
+	"morgan":"*",
+	"jsonwebtoken":"*"
 	},
 	"repository": {},
 	"engines": {
