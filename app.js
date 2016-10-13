@@ -5,9 +5,9 @@ var morgan      = require('morgan');
 var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
 
 var port = process.env.PORT || 8080; // used to create, sign, and verify tokens
-var config = require('./config'); // get our config file
+//var config = require('./config'); // get our config file
 
-app.set('superSecret', config.secret); // secret variable
+//app.set('superSecret', config.secret); // secret variable
 // use body parser so we can get info from POST and/or URL parameters
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -111,7 +111,7 @@ app.delete('/api/teams/:teamId',function(req,res){
 });
 //4. API to get Sizing Properties
 app.get('/api/hana/properties',function(req,res){
-	res.send('{ "hanaProps" : { "minMemory" : "5" , "maxMemory" : "20" , "minSaps" :  "01" , "maxSaps" :  "1000" , "storageFactor" : "2" , "hanaReleases" : ["SPS11"], "sapReleases" : ["6.7"]} , "industries" : [ "Communications" ], "countries" : [{ "countryCode" : "IN" , "country" : "INDIA" }]}');
+	res.send('{ "hanaProps" : { "minMemory" : 5 , "maxMemory" : 20 , "minSaps" :  "01" , "maxSaps" :  "1000" , "storageFactor" : "2" , "hanaReleases" : ["SPS11"], "sapReleases" : ["6.7"]} , "industries" : [ "Communications" ], "countries" : [{ "countryCode" : "IN" , "country" : "INDIA" }]}');
 });
 //5.API to search HANA DB Sizings
 app.get('/api/hana/db/sizings',function(req,res){
@@ -296,7 +296,7 @@ app.get('/api/hana/db/sizings/:sizingId/:sizingVersion',function(req,res){
 		}
 	},
 	"sizingRequest" : {
-		"hanaRelease" :  "1" ,
+		"hanaRelease" :  "SPS11" ,
 		"hanaMemory" :  1000
 	},
 	"nonProd" : {
@@ -416,6 +416,43 @@ app.get('/api/hana/dbapps/sizings/:sizingId/:sizingVersion',function(req,res){
 		}
 	]
 })
+});
+app.get('/api/hana/db/sizing',function(req,res){
+	res.send({
+	  sizingResults : [{   
+	siteId :  "HA", //PROD, HA, DR, STAND-ALONE  
+	//sizingChoices : [{    
+		modelId :  "67890",    
+		modelDisplay : "E489-01OIL",   
+		cpu : "90",      
+		cores :"20" ,    
+		memory :"100" ,   
+			storage : {      
+				ssd :  "2" ,    
+				hdd :  "2"      
+				},  
+				ethPort :  "50" ,    
+				sanPort :  "20" ,     
+				scaling :  "Scale up" ,     
+					breakup : [{        
+						envId : "Test" ,       
+						components : [{         
+						componentId : "12345",          
+						component :  "sample",          
+						lpar :  0.23,         
+						cores :  0.45 ,         
+						memory :  250        
+							}       
+						]      
+					}      
+				//]     
+			//}    
+		]   
+	  }  
+	 ] 
+   
+	
+	})
 });
 app.listen(port);
 console.log('app is listening to http://localhost:' + port);
