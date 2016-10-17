@@ -3,6 +3,9 @@ var app = express();
 var bodyParser  = require('body-parser');
 var morgan      = require('morgan');
 var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
+var today = new Date();
+var loginstamp=today.setHours(today.getHours() + 1);
+var refreshstamp=today.setHours(today.getHours() + 24);
 
 var port = process.env.PORT || 8080; // used to create, sign, and verify tokens
 //var config = require('./config'); // get our config file
@@ -18,10 +21,10 @@ app.use(morgan('dev'));
 app.post('/api/auth/token', function (req, res) {
 	var header=req.headers;
 	console.log(JSON.stringify(req.body));
-	res.json({isauthenticated:true,accessToken :"se43" ,  refreshToken : "dsdew" ,  issuedAt : "25aug",expiresAfter : 1475238618000,  userName : "jismisimon",  userRole : "developer",properties : {defaultTimeout :"900"},clientSupport : { state : "supported/deprecated/withdrawn" , message :"Success" , upgradeUrl :"" },serverSupport : {   state :"active" ,sucmessage :"Serverup",errmessage:"Server Down" }});
+	res.json({isauthenticated:true,accessToken :"se43" ,  refreshToken : "dsdew" ,  issuedAt : "25aug",expiresAfter : loginstamp,  userName : "jismisimon",  userRole : "developer",properties : {defaultTimeout :"900"},clientSupport : { state : "supported/deprecated/withdrawn" , message :"Success" , upgradeUrl :"" },serverSupport : {   state :"active" ,sucmessage :"Serverup",errmessage:"Server Down" }});
 });
 app.put('/api/auth/token', function (req, res) {
-	res.json({accessToken :"se43" ,  refreshToken : "dsdew" ,  issuedAt : "25aug",expiresAfter : 1475238618000});
+	res.json({accessToken :"se43" ,  refreshToken : "dsdew" ,  issuedAt : "25aug",expiresAfter : refreshstamp});
 });
 //3. API to get Sizing Categories
 app.get('/api/categories',function(req,res){
@@ -35,6 +38,25 @@ app.delete('/api/teams/:teamId/sizings/:sizingId',function(req,res){
 });
 app.post('/api/teams/:teamId/sizings',function(req,res){
 	res.send('{"teamId" :3,"sizingId":"1244"}');
+});
+//8.API to Create/Confirm sizing for HANA DB
+app.post('/api/hana/db/sizings',function(req,res){
+	res.send('{"sizingIdDisplay" : "SB-123456" , "sizingId" : "123456" , "sizingVersion" : "01" , "message" : "SB-123456 is successfully created. An email has been sent to rinjfran@in.ibm.com"}');
+});
+
+//13.API to Create / Confirm sizing for HANA DB + App Server
+app.post('/api/hana/dbapps/sizings',function(req,res){
+	res.send('{"sizingIdDisplay" : "SB-123456" , "sizingId" : "123456" , "sizingVersion" : "01" , "message" : "SB-123456 is successfully created. An email has been sent to rinjfran@in.ibm.com"}');
+});
+
+//9.API to Update sizing for HANA DB (new version)
+app.put('/api/hana/db/sizings/:sizingId',function(req,res){
+	res.send('{"sizingIdDisplay" : "SB-123456" , "sizingId" : "123456" , "sizingVersion" : "01" , "message" : "SB-123456 is successfully updated. An email has been sent to rinjfran@in.ibm.com"}');
+});
+
+//14.API to Update sizing for HANA DB + App Server
+app.put('/api/hana/dbapps/sizings/:sizingId',function(req,res){
+	res.send('{"sizingIdDisplay" : "SB-123456" , "sizingId" : "123456" , "sizingVersion" : "01" , "message" : "SB-123456 is successfully updated. An email has been sent to rinjfran@in.ibm.com"}');
 });
 app.get('/api/teams',function(req,res){
 	console.log(req.body);
@@ -122,7 +144,7 @@ app.get('/api/hana/db/sizings',function(req,res){
 				"sizingIdDisplay" :  "SB-32131-01",
 				"sizingId" :  "32131" ,
 				"sizingVersion" :  "01" ,
-				"sizingTimestamp" :  "2011-06-29T16:52:48.000Z",
+				"sizingTimestamp" :  "2015-03-25T12:00:00",
 				"sizingType" :  "new" ,
 				"countryCode" :  "IN" ,
 				"industry" :  "Communications" ,
@@ -130,35 +152,35 @@ app.get('/api/hana/db/sizings',function(req,res){
 				"osId" :  "1" ,
 				"solutionId" :  "Hana DB" ,
 				"growthFactor" : {
-					"pct" :  "1" ,
+					"pct" :  1 ,
 					"years" :  "2016"
 				},
 				"disk" : {
-					"diskSpace" :  "100" ,
-					"backupGenerations" :  "2"
+					"diskSpace" :  100 ,
+					"backupGenerations" :  2
 				},
 				"ha" : {
 					"optimization" :  "Cost Optimized" ,
-					"diskPct" :  "2"
+					"diskPct" :  2
 				},
 				"dr" : {
 					"optimization" :  "Cost Optimized" ,
-					"diskPct" :  "1"
+					"diskPct" :  1
 				}
 			},
 			"sizingRequest" : {
-				"hanaRelease" :  "1" ,
-				"hanaMemory" :  "100"
+				"hanaRelease" :  1 ,
+				"hanaMemory" :  100
 			},
 			"nonProd" : {
 				"envs" : [{
 						"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
-						"hanaMemoryPct" :  "200" ,
+						"hanaMemoryPct" :  200 ,
 						"hosting" :  "HA" , //HA, DR, STAND-ALONE
 						"stressEnvFlag" :  "Y" //Y/N
 					}
 				],
-				"diskPct" :  "3"
+				"diskPct" :  3
 			}
 		}
 	]
@@ -209,7 +231,7 @@ app.get('/api/sizings',function(req,res){
 			"sizingIdDisplay" :  "SB-123-01" , //Id+Version
 			"sizingId" :  "1244" ,
 			"sizingVersion" :  "1" ,
-			"sizingTimestamp" :  "2011-06-29T16:52:48.000Z" ,
+			"sizingTimestamp" :  "2015-03-25T12:00:00" ,
 		"sizedBy" :  "gopinathrk@in.ibm.com" ,
 			"sizingType" :  "NEW" ,
 			"countryCode" :  "IN" ,
@@ -237,7 +259,7 @@ app.get('/api/sizings',function(req,res){
 				"sizingIdDisplay" :  "SB-1234-01" , //Id+Version
 				"sizingId" :  "1234" ,
 				"sizingVersion" :  "1" ,
-				"sizingTimestamp" :  "2011-06-29T16:52:48.000Z" ,
+				"sizingTimestamp" :  "2015-03-25T12:00:00" ,
 			"sizedBy" :  "jissimon@in.ibm.com" ,
 				"sizingType" :  "NEW" ,
 				"countryCode" :  "IN" ,
@@ -271,7 +293,7 @@ app.get('/api/hana/db/sizings/:sizingId/:sizingVersion',function(req,res){
 		"sizingIdDisplay" :  "SB-1234-01" , //Id+Version
 		"sizingId" :  "1234" ,
 		"sizingVersion" :  "1" ,
-		"sizingTimestamp" :  "2011-06-29T16:52:48.000Z" ,
+		"sizingTimestamp" :  "2015-03-25T12:00:00" ,
 		"sizingType" :  "NEW" ,
 		"countryCode" :  "IN" ,
 		"industry" :  "Communications" ,
@@ -279,7 +301,7 @@ app.get('/api/hana/db/sizings/:sizingId/:sizingVersion',function(req,res){
 		"osId" :  "1" ,
 		"solutionId" :  "HANADB"  ,
 		"growthFactor" : {
-			"pct" :  "1" ,
+			"pct" :  "10" ,
 			"years" :"3"
 		},
 		"disk" : {
@@ -287,11 +309,11 @@ app.get('/api/hana/db/sizings/:sizingId/:sizingVersion',function(req,res){
 			"backupGenerations" :  3
 		},
 		"ha" : {
-			"optimization" :  "cost optimizied" ,
+			"optimization" :  "Cost Optimized" ,
 			"diskPct" :  2
 		},
 		"dr" : {
-			"optimization" :  "cost optimizied" ,
+			"optimization" :  "Cost Optimized" ,
 			"diskPct" :  1
 		}
 	},
@@ -302,7 +324,7 @@ app.get('/api/hana/db/sizings/:sizingId/:sizingVersion',function(req,res){
 	"nonProd" : {
 		"envs" : [{
 				"envId" :  "TEST" , //DEV, TEST, SANDBOX, PREPROD
-				"hanaMemoryPct" :  200 ,
+				"hanaMemoryPct" :  60 ,
 				"hosting" :  "HA" ,
 				"stressEnvFlag" :  "Y" //Y/N
 			}
@@ -344,7 +366,7 @@ app.get('/api/hana/dbapps/sizings/:sizingId/:sizingVersion',function(req,res){
 		"sizingIdDisplay" :  "SB-1234-01" , //Id+Version
 		"sizingId" :  "1234" ,
 		"sizingVersion" :  "1" ,
-		"sizingTimestamp" :  "2014:10:17T18:30:00Z" ,
+		"sizingTimestamp" :  "2015-03-25T12:00:00" ,
 		"sizingType" :  "NEW" ,
 		"countryCode" :  "IN" ,
 		"industry" :  "Communications" ,
@@ -360,25 +382,25 @@ app.get('/api/hana/dbapps/sizings/:sizingId/:sizingVersion',function(req,res){
 			"backupGenerations" :  3
 		},
 		"ha" : {
-			"optimization" :  "Cost Optimizied" ,
+			"optimization" :  "Cost Optimized" ,
 			"diskPct" :  2
 		},
 		"dr" : {
-			"optimization" :  "Performance Optimizied" ,
+			"optimization" :  "Performance Optimized" ,
 			"diskPct" :  1
 		}
 	},
 	"sizingRequest" : {
 		"hanaRelease" :  "SPS11" ,
 		"hanaMemory" :  200,
-		"sapRelease" :"12",
+		"sapRelease" :"6.7",
 		"appSaps":1001,
 		"tier":"2 tier"
 	},
 	"nonProd" : {
 		"envs" : [{
 				"envId" :  "TEST" , //DEV, TEST, SANDBOX, PREPROD
-				"hanaMemoryPct" :  200 ,
+				"hanaMemoryPct" :  60 ,
 				"appSapsPc":40,
 				"hosting" :  "HA" ,
 				"stressEnvFlag" :  "Y" //Y/N
@@ -419,39 +441,129 @@ app.get('/api/hana/dbapps/sizings/:sizingId/:sizingVersion',function(req,res){
 });
 app.get('/api/hana/db/sizing',function(req,res){
 	res.send({
-	  sizingResults : [{   
-	siteId :  "HA", //PROD, HA, DR, STAND-ALONE  
-	//sizingChoices : [{    
-		modelId :  "67890",    
-		modelDisplay : "E489-01OIL",   
-		cpu : "90",      
-		cores :"20" ,    
-		memory :"100" ,   
-			storage : {      
-				ssd :  "2" ,    
-				hdd :  "2"      
-				},  
-				ethPort :  "50" ,    
-				sanPort :  "20" ,     
-				scaling :  "Scale up" ,     
-					breakup : [{        
-						envId : "Test" ,       
-						components : [{         
-						componentId : "12345",          
-						component :  "sample",          
-						lpar :  0.23,         
-						cores :  0.45 ,         
-						memory :  250        
-							}       
-						]      
-					}      
-				//]     
-			//}    
-		]   
-	  }  
-	 ] 
-   
-	
+	  sizingResults : [{
+	siteId :  "HA", //PROD, HA, DR, STAND-ALONE
+	sizingChoices : [{
+		modelId :  "67890",
+		modelDisplay : "E489-01OIL",
+		cpu : "90",
+		cores :"20" ,
+		memory :"100" ,
+			storage : {
+				ssd :  2 ,
+				hdd :  2
+				},
+				ethPort :  "50" ,
+				sanPort :  "20" ,
+				scaling :  "Scale up" ,
+					breakup : [{
+						envId : "Test" ,
+						components : [{
+						componentId : "12345",
+						component :  "sample",
+						lpar :  0.23,
+						cores :  0.45 ,
+						memory :  250
+							}
+						]
+					}
+				]
+			}
+		]
+	  },
+		{
+	siteId :  "PROD", //PROD, HA, DR, STAND-ALONE
+	sizingChoices : [{
+		modelId :  "67890",
+		modelDisplay : "E489-01OIT",
+		cpu : "90",
+		cores :"20" ,
+		memory :"100" ,
+			storage : {
+				ssd : 2 ,
+				hdd :  2
+				},
+				ethPort :  "50" ,
+				sanPort :  "20" ,
+				scaling :  "Scale up" ,
+					breakup : [{
+						envId : "Test" ,
+						components : [{
+						componentId : "12345",
+						component :  "sample",
+						lpar :  0.23,
+						cores :  0.45 ,
+						memory :  250
+							}
+						]
+					}
+				]
+			}
+		]
+	  },
+{
+	siteId :  "DR", //PROD, HA, DR, STAND-ALONE
+	sizingChoices : [{
+		modelId :  "67890",
+		modelDisplay : "E489-01OIJ",
+		cpu : "90",
+		cores :"20" ,
+		memory :"100" ,
+			storage : {
+				ssd :  2 ,
+				hdd :  2
+				},
+				ethPort :  "50" ,
+				sanPort :  "20" ,
+				scaling :  "Scale up" ,
+					breakup : [{
+						envId : "Test" ,
+						components : [{
+						componentId : "12345",
+						component :  "sample",
+						lpar :  0.23,
+						cores :  0.45 ,
+						memory :  250
+							}
+						]
+					}
+				]
+			}
+		]
+	  },
+{
+	siteId :  "STAND-ALONE", //PROD, HA, DR, STAND-ALONE
+	sizingChoices : [{
+		modelId :  "67890",
+		modelDisplay : "E489-01OIG",
+		cpu : "90",
+		cores :"20" ,
+		memory :"100" ,
+			storage : {
+				ssd :  2 ,
+				hdd :  2
+				},
+				ethPort :  "50" ,
+				sanPort :  "20" ,
+				scaling :  "Scale up" ,
+					breakup : [{
+						envId : "Test" ,
+						components : [{
+						componentId : "12345",
+						component :  "sample",
+						lpar :  0.23,
+						cores :  0.45 ,
+						memory :  250
+							}
+						]
+					}
+				]
+			}
+		]
+	  }
+	 ]
+
+
 	})
 });
 app.listen(port);
