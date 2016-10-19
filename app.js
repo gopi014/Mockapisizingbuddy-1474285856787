@@ -44,14 +44,16 @@ app.post('/api/teams/:teamId/sizings',function(req,res){
 //8.API to Create/Confirm sizing for HANA DB
 app.post('/api/hana/db/sizings',function(req,res){
 var sampleFile=req.files.refFile;
-var path=__dirname+'/uploads/'+req.files.refFile.name;
+var path=__dirname+'/'+req.files.refFile.name;
 	console.log(path);
 
 	sampleFile.mv(path, function(err) {
         if (err) {
+        	console.log(err);
             res.status(500).send(err);
         }
         else {
+        			console.log("success");
 					res.send('{"sizingIdDisplay" : "SB-123456" , "sizingId" : "123456" , "sizingVersion" : "01" , "message" : "SB-123456 is successfully created. An email has been sent to rinjfran@in.ibm.com"}');
         }
     });
