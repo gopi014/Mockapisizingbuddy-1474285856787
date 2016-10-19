@@ -44,10 +44,10 @@ app.post('/api/teams/:teamId/sizings',function(req,res){
 //8.API to Create/Confirm sizing for HANA DB
 app.post('/api/hana/db/sizings',function(req,res){
 var sampleFile=req.files.refFile;
-var path='./uploads';
-	console.log(sampleFile);
+var path=__dirname + '/public';
 	console.log(path);
-	sampleFile.mv('./uploads/'+req.files.refFile.name, function(err) {
+
+	sampleFile.mv(__dirname+'/uploads/'+req.files.refFile.name, function(err) {
         if (err) {
             res.status(500).send(err);
         }
