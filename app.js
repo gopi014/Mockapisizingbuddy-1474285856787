@@ -23,7 +23,7 @@ app.use(fileUpload());
 app.post('/api/auth/token', function (req, res) {
 	var header=req.headers;
 	console.log(JSON.stringify(req.body));
-	res.json({isauthenticated:true,accessToken :"se43" ,  refreshToken : "dsdew" ,  issuedAt : "25aug",expiresAfter : loginstamp,  userName : "jismisimon",  userRole : "developer",properties : {defaultTimeout :"900"},clientSupport : { state : "supported/deprecated/withdrawn" , message :"Success" , upgradeUrl :"" },serverSupport : {   state :"active" ,sucmessage :"Serverup",errmessage:"Server Down" }});
+	res.json({isauthenticated:true,accessToken :"se43" ,  refreshToken : "dsdew" ,  issuedAt : "25aug",expiresAfter : loginstamp,  userName : "jismisimon",  userRole : "IBMers",properties : {defaultTimeout :"900"},clientSupport : { state : "supported/deprecated/withdrawn" , message :"Success" , upgradeUrl :"" },serverSupport : {   state :"active" ,sucmessage :"Serverup",errmessage:"Server Down" }});
 });
 app.put('/api/auth/token', function (req, res) {
 	res.json({accessToken :"se43" ,  refreshToken : "dsdew" ,  issuedAt : "25aug",expiresAfter : refreshstamp});
@@ -44,16 +44,12 @@ app.post('/api/teams/:teamId/sizings',function(req,res){
 //8.API to Create/Confirm sizing for HANA DB
 app.post('/api/hana/db/sizings',function(req,res){
 var sampleFile=req.files.refFile;
-var path=__dirname+'/'+req.files.refFile.name;
-	console.log(path);
-
-	sampleFile.mv(path, function(err) {
+	console.log(req.body);
+	sampleFile.mv('C:/SizingBuddy/server/uploads/'+req.files.refFile.name, function(err) {
         if (err) {
-        	console.log(err);
             res.status(500).send(err);
         }
         else {
-        			console.log("success");
 					res.send('{"sizingIdDisplay" : "SB-123456" , "sizingId" : "123456" , "sizingVersion" : "01" , "message" : "SB-123456 is successfully created. An email has been sent to rinjfran@in.ibm.com"}');
         }
     });
@@ -163,8 +159,8 @@ app.get('/api/hana/db/sizings',function(req,res){
 				"sizingType" :  "new" ,
 				"countryCode" :  "IN" ,
 				"industry" :  "Communications" ,
-				"brandId" :  "1" ,
-				"osId" :  "1" ,
+				"brandId" :  "Power8" ,
+				"osId" :  "Linux" ,
 				"solutionId" :  "Hana DB" ,
 				"growthFactor" : {
 					"pct" :  1 ,
@@ -207,8 +203,8 @@ app.get('/api/hana/db/sizings',function(req,res){
 					"sizingType" :  "new" ,
 					"countryCode" :  "IN" ,
 					"industry" :  "Communications" ,
-					"brandId" :  "1" ,
-					"osId" :  "1" ,
+					"brandId" :  "Power8" ,
+					"osId" :  "Linux" ,
 					"solutionId" :  "Hana DB" ,
 					"growthFactor" : {
 						"pct" :  1 ,
@@ -251,8 +247,8 @@ app.get('/api/hana/db/sizings',function(req,res){
 						"sizingType" :  "new" ,
 						"countryCode" :  "IN" ,
 						"industry" :  "Communications" ,
-						"brandId" :  "1" ,
-						"osId" :  "1" ,
+						"brandId" :  "Power8" ,
+						"osId" :  "Linux" ,
 						"solutionId" :  "Hana DB" ,
 						"growthFactor" : {
 							"pct" :  1 ,
@@ -295,8 +291,8 @@ app.get('/api/hana/db/sizings',function(req,res){
 							"sizingType" :  "new" ,
 							"countryCode" :  "IN" ,
 							"industry" :  "Communications" ,
-							"brandId" :  "1" ,
-							"osId" :  "1" ,
+							"brandId" :  "Power8" ,
+							"osId" :  "Linux" ,
 							"solutionId" :  "Hana DB" ,
 							"growthFactor" : {
 								"pct" :  1 ,
@@ -339,8 +335,8 @@ app.get('/api/hana/db/sizings',function(req,res){
 								"sizingType" :  "new" ,
 								"countryCode" :  "IN" ,
 								"industry" :  "Communications" ,
-								"brandId" :  "1" ,
-								"osId" :  "1" ,
+								"brandId" :  "Power8" ,
+								"osId" :  "Linux" ,
 								"solutionId" :  "Hana DB" ,
 								"growthFactor" : {
 									"pct" :  1 ,
@@ -383,8 +379,8 @@ app.get('/api/hana/db/sizings',function(req,res){
 									"sizingType" :  "new" ,
 									"countryCode" :  "IN" ,
 									"industry" :  "Communications" ,
-									"brandId" :  "1" ,
-									"osId" :  "1" ,
+									"brandId" :  "Power8" ,
+									"osId" :  "Linux" ,
 									"solutionId" :  "Hana DB" ,
 									"growthFactor" : {
 										"pct" :  1 ,
@@ -427,8 +423,8 @@ app.get('/api/hana/db/sizings',function(req,res){
 										"sizingType" :  "new" ,
 										"countryCode" :  "IN" ,
 										"industry" :  "Communications" ,
-										"brandId" :  "1" ,
-										"osId" :  "1" ,
+										"brandId" :  "Power8" ,
+										"osId" :  "Linux" ,
 										"solutionId" :  "Hana DB" ,
 										"growthFactor" : {
 											"pct" :  1 ,
@@ -471,8 +467,8 @@ app.get('/api/hana/db/sizings',function(req,res){
 											"sizingType" :  "new" ,
 											"countryCode" :  "IN" ,
 											"industry" :  "Communications" ,
-											"brandId" :  "1" ,
-											"osId" :  "1" ,
+											"brandId" :  "Power8" ,
+											"osId" :  "Linux" ,
 											"solutionId" :  "Hana DB" ,
 											"growthFactor" : {
 												"pct" :  1 ,
@@ -515,8 +511,8 @@ app.get('/api/hana/db/sizings',function(req,res){
 												"sizingType" :  "new" ,
 												"countryCode" :  "IN" ,
 												"industry" :  "Communications" ,
-												"brandId" :  "1" ,
-												"osId" :  "1" ,
+												"brandId" :  "Power8" ,
+												"osId" :  "Linux" ,
 												"solutionId" :  "Hana DB" ,
 												"growthFactor" : {
 													"pct" :  1 ,
@@ -559,8 +555,8 @@ app.get('/api/hana/db/sizings',function(req,res){
 													"sizingType" :  "new" ,
 													"countryCode" :  "IN" ,
 													"industry" :  "Communications" ,
-													"brandId" :  "1" ,
-													"osId" :  "1" ,
+													"brandId" :  "Power8" ,
+													"osId" :  "Linux" ,
 													"solutionId" :  "Hana DB" ,
 													"growthFactor" : {
 														"pct" :  1 ,
@@ -709,8 +705,8 @@ app.get('/api/hana/db/sizings/:sizingId/:sizingVersion',function(req,res){
 		"sizingType" :  "NEW" ,
 		"countryCode" :  "IN" ,
 		"industry" :  "Communications" ,
-		"brandId" :  "1" ,
-		"osId" :  "1" ,
+		"brandId" :  "Power8" ,
+		"osId" :  "Linux" ,
 		"solutionId" :  "HANADB"  ,
 		"growthFactor" : {
 			"pct" :  "10" ,
@@ -782,8 +778,8 @@ app.get('/api/hana/dbapps/sizings/:sizingId/:sizingVersion',function(req,res){
 		"sizingType" :  "NEW" ,
 		"countryCode" :  "IN" ,
 		"industry" :  "Communications" ,
-		"brandId" :  "1" ,
-		"osId" :  "1" ,
+		"brandId" :  "Power8" ,
+		"osId" :  "Linux" ,
 		"solutionId" :  "HANADB"  ,
 		"growthFactor" : {
 			"pct" :  "20" ,
