@@ -4,9 +4,9 @@ var app = express();
 var bodyParser  = require('body-parser');
 var morgan      = require('morgan');
 var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
-var today = new Date();
-var loginstamp=today.setHours(today.getHours() + 1);
-var refreshstamp=today.setHours(today.getHours() + 24);
+var today ;
+var loginstamp;
+var refreshstamp;
 
 var port = process.env.PORT || 8080; // used to create, sign, and verify tokens
 //var config = require('./config'); // get our config file
@@ -21,6 +21,9 @@ app.use(morgan('dev'));
 app.use(fileUpload());
 
 app.post('/api/auth/token', function (req, res) {
+	today = new Date();
+	loginstamp=today.setHours(today.getHours() + 1);
+	refreshstamp=today.setHours(today.getHours() + 24);
 	var header=req.headers;
 	console.log(JSON.stringify(req.body));
 	res.json({isauthenticated:true,accessToken :"se43" ,  refreshToken : "dsdew" ,  issuedAt : "25aug",expiresAfter : loginstamp,  userName : "jismisimon",  userRole : "IBMers",properties : {defaultTimeout :"900"},clientSupport : { state : "supported/deprecated/withdrawn" , message :"Success" , upgradeUrl :"" },serverSupport : {   state :"active" ,sucmessage :"Serverup",errmessage:"Server Down" }});
@@ -43,16 +46,24 @@ app.post('/api/teams/:teamId/sizings',function(req,res){
 });
 //8.API to Create/Confirm sizing for HANA DB
 app.post('/api/hana/db/sizings',function(req,res){
-var sampleFile=req.files.refFile;
-	console.log(req.body);
-	sampleFile.mv('C:/SizingBuddy/server/uploads/'+req.files.refFile.name, function(err) {
-        if (err) {
-            res.status(500).send(err);
-        }
-        else {
-					res.send('{"sizingIdDisplay" : "SB-123456" , "sizingId" : "123456" , "sizingVersion" : "01" , "message" : "SB-123456 is successfully created. An email has been sent to rinjfran@in.ibm.com"}');
-        }
-    });
+
+	console.log(req.files);
+	if(!req.files){
+		res.send('{"sizingIdDisplay" : "SB-123456" , "sizingId" : "123456" , "sizingVersion" : "01" , "message" : "SB-123456 is successfully created. An email has been sent to rinjfran@in.ibm.com"}');
+
+	}else{
+		var sampleFile=req.files.refFile;
+		sampleFile.mv('C:/SizingBuddy/server/uploads/'+req.files.refFile.name, function(err) {
+					if (err) {
+							res.status(500).send(err);
+					}
+					else {
+						res.send('{"sizingIdDisplay" : "SB-123456" , "sizingId" : "123456" , "sizingVersion" : "01" , "message" : "SB-123456 is successfully created. An email has been sent to rinjfran@in.ibm.com"}');
+
+						}
+			});
+	}
+
 	});
 
 //13.API to Create / Confirm sizing for HANA DB + App Server
@@ -594,6 +605,389 @@ app.get('/api/hana/db/sizings',function(req,res){
 	]
 });
 });
+//10.API to search HANA DB AND APP SERVER Sizings
+app.get('/api/hana/dbapps/sizings',function(req,res){
+	res.send({
+	"totalCount" :  40,
+	"items" : [{
+			"sizingHeader" : {
+				"sizingIdDisplay" :  "SB-32131-01",
+				"sizingId" :  "32131" ,
+				"sizingVersion" :  "01" ,
+				"sizingTimestamp" :  "2015-03-25T12:00:00",
+				"sizingType" :  "new" ,
+				"countryCode" :  "IN" ,
+				"industry" :  "Communications" ,
+				"brandId" :  "1" ,
+				"osId" :  "1" ,
+				"solutionId" :  "Hana DB" ,
+				"growthFactor" : {
+					"pct" :  1 ,
+					"years" :  "2016"
+				},
+				"disk" : {
+					"diskSpace" :  100 ,
+					"backupGenerations" :  2
+				},
+				"ha" : {
+					"optimization" :  "Cost Optimized" ,
+					"diskPct" :  2
+				},
+				"dr" : {
+					"optimization" :  "Cost Optimized" ,
+					"diskPct" :  1
+				}
+			},
+			"sizingRequest" : {
+				"hanaRelease" :  1 ,
+				"hanaMemory" :  100,
+				"sapRelease" :  "6.7",
+				"appSaps" :  1000 ,
+				"tier" :  "2 tier"
+			},
+			"nonProd" : {
+				"envs" : [{
+						"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
+						"hanaMemoryPct" :  200 ,
+						"hosting" :  "HA" , //HA, DR, STAND-ALONE
+						"stressEnvFlag" :  "Y" //Y/N
+					}
+				],
+				"diskPct" :  3
+			}
+		},
+		{
+				"sizingHeader" : {
+					"sizingIdDisplay" :  "SB-32131-02",
+					"sizingId" :  "32131" ,
+					"sizingVersion" :  "01" ,
+					"sizingTimestamp" :  "2015-03-25T12:00:00",
+					"sizingType" :  "new" ,
+					"countryCode" :  "IN" ,
+					"industry" :  "Communications" ,
+					"brandId" :  "1" ,
+					"osId" :  "1" ,
+					"solutionId" :  "Hana DB" ,
+					"growthFactor" : {
+						"pct" :  1 ,
+						"years" :  "2016"
+					},
+					"disk" : {
+						"diskSpace" :  100 ,
+						"backupGenerations" :  2
+					},
+					"ha" : {
+						"optimization" :  "Cost Optimized" ,
+						"diskPct" :  2
+					},
+					"dr" : {
+						"optimization" :  "Cost Optimized" ,
+						"diskPct" :  1
+					}
+				},
+				"sizingRequest" : {
+					"hanaRelease" :  1 ,
+					"hanaMemory" :  100,
+					"sapRelease" :  "6.7",
+				"appSaps" :  1000 ,
+				"tier" :  "2 tier"
+				},
+				"nonProd" : {
+					"envs" : [{
+							"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
+							"hanaMemoryPct" :  200 ,
+							"hosting" :  "HA" , //HA, DR, STAND-ALONE
+							"stressEnvFlag" :  "Y" //Y/N
+						}
+					],
+					"diskPct" :  3
+				}
+			},
+			{
+					"sizingHeader" : {
+						"sizingIdDisplay" :  "SB-32131-03",
+						"sizingId" :  "32131" ,
+						"sizingVersion" :  "01" ,
+						"sizingTimestamp" :  "2015-03-25T12:00:00",
+						"sizingType" :  "new" ,
+						"countryCode" :  "IN" ,
+						"industry" :  "Communications" ,
+						"brandId" :  "1" ,
+						"osId" :  "1" ,
+						"solutionId" :  "Hana DB" ,
+						"growthFactor" : {
+							"pct" :  1 ,
+							"years" :  "2016"
+						},
+						"disk" : {
+							"diskSpace" :  100 ,
+							"backupGenerations" :  2
+						},
+						"ha" : {
+							"optimization" :  "Cost Optimized" ,
+							"diskPct" :  2
+						},
+						"dr" : {
+							"optimization" :  "Cost Optimized" ,
+							"diskPct" :  1
+						}
+					},
+					"sizingRequest" : {
+						"hanaRelease" :  1 ,
+						"hanaMemory" :  100,
+						"sapRelease" :  "6.7",
+				"appSaps" :  1000 ,
+				"tier" :  "2 tier"
+					},
+					"nonProd" : {
+						"envs" : [{
+								"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
+								"hanaMemoryPct" :  200 ,
+								"hosting" :  "HA" , //HA, DR, STAND-ALONE
+								"stressEnvFlag" :  "Y" //Y/N
+							}
+						],
+						"diskPct" :  3
+					}
+				},
+				{
+						"sizingHeader" : {
+							"sizingIdDisplay" :  "SB-32131-04",
+							"sizingId" :  "32131" ,
+							"sizingVersion" :  "01" ,
+							"sizingTimestamp" :  "2015-03-25T12:00:00",
+							"sizingType" :  "new" ,
+							"countryCode" :  "IN" ,
+							"industry" :  "Communications" ,
+							"brandId" :  "1" ,
+							"osId" :  "1" ,
+							"solutionId" :  "Hana DB" ,
+							"growthFactor" : {
+								"pct" :  1 ,
+								"years" :  "2016"
+							},
+							"disk" : {
+								"diskSpace" :  100 ,
+								"backupGenerations" :  2
+							},
+							"ha" : {
+								"optimization" :  "Cost Optimized" ,
+								"diskPct" :  2
+							},
+							"dr" : {
+								"optimization" :  "Cost Optimized" ,
+								"diskPct" :  1
+							}
+						},
+						"sizingRequest" : {
+							"hanaRelease" :  1 ,
+							"hanaMemory" :  100,
+							"sapRelease" :  "6.7",
+				"appSaps" :  1000 ,
+				"tier" :  "2 tier"
+						},
+						"nonProd" : {
+							"envs" : [{
+									"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
+									"hanaMemoryPct" :  200 ,
+									"hosting" :  "HA" , //HA, DR, STAND-ALONE
+									"stressEnvFlag" :  "Y" //Y/N
+								}
+							],
+							"diskPct" :  3
+						}
+					},
+					{
+							"sizingHeader" : {
+								"sizingIdDisplay" :  "SB-32131-05",
+								"sizingId" :  "32131" ,
+								"sizingVersion" :  "01" ,
+								"sizingTimestamp" :  "2015-03-25T12:00:00",
+								"sizingType" :  "new" ,
+								"countryCode" :  "IN" ,
+								"industry" :  "Communications" ,
+								"brandId" :  "1" ,
+								"osId" :  "1" ,
+								"solutionId" :  "Hana DB" ,
+								"growthFactor" : {
+									"pct" :  1 ,
+									"years" :  "2016"
+								},
+								"disk" : {
+									"diskSpace" :  100 ,
+									"backupGenerations" :  2
+								},
+								"ha" : {
+									"optimization" :  "Cost Optimized" ,
+									"diskPct" :  2
+								},
+								"dr" : {
+									"optimization" :  "Cost Optimized" ,
+									"diskPct" :  1
+								}
+							},
+							"sizingRequest" : {
+								"hanaRelease" :  1 ,
+								"hanaMemory" :  100,
+								"sapRelease" :  "6.7",
+				"appSaps" :  1000 ,
+				"tier" :  "2 tier"
+							},
+							"nonProd" : {
+								"envs" : [{
+										"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
+										"hanaMemoryPct" :  200 ,
+										"hosting" :  "HA" , //HA, DR, STAND-ALONE
+										"stressEnvFlag" :  "Y" //Y/N
+									}
+								],
+								"diskPct" :  3
+							}
+						},
+						{
+								"sizingHeader" : {
+									"sizingIdDisplay" :  "SB-32131-06",
+									"sizingId" :  "32131" ,
+									"sizingVersion" :  "01" ,
+									"sizingTimestamp" :  "2015-03-25T12:00:00",
+									"sizingType" :  "new" ,
+									"countryCode" :  "IN" ,
+									"industry" :  "Communications" ,
+									"brandId" :  "1" ,
+									"osId" :  "1" ,
+									"solutionId" :  "Hana DB" ,
+									"growthFactor" : {
+										"pct" :  1 ,
+										"years" :  "2016"
+									},
+									"disk" : {
+										"diskSpace" :  100 ,
+										"backupGenerations" :  2
+									},
+									"ha" : {
+										"optimization" :  "Cost Optimized" ,
+										"diskPct" :  2
+									},
+									"dr" : {
+										"optimization" :  "Cost Optimized" ,
+										"diskPct" :  1
+									}
+								},
+								"sizingRequest" : {
+									"hanaRelease" :  1 ,
+									"hanaMemory" :  100,
+									"sapRelease" :  "6.7",
+				"appSaps" :  1000 ,
+				"tier" :  "2 tier"
+								},
+								"nonProd" : {
+									"envs" : [{
+											"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
+											"hanaMemoryPct" :  200 ,
+											"hosting" :  "HA" , //HA, DR, STAND-ALONE
+											"stressEnvFlag" :  "Y" //Y/N
+										}
+									],
+									"diskPct" :  3
+								}
+							},
+							{
+									"sizingHeader" : {
+										"sizingIdDisplay" :  "SB-32131-07",
+										"sizingId" :  "32131" ,
+										"sizingVersion" :  "01" ,
+										"sizingTimestamp" :  "2015-03-25T12:00:00",
+										"sizingType" :  "new" ,
+										"countryCode" :  "IN" ,
+										"industry" :  "Communications" ,
+										"brandId" :  "1" ,
+										"osId" :  "1" ,
+										"solutionId" :  "Hana DB" ,
+										"growthFactor" : {
+											"pct" :  1 ,
+											"years" :  "2016"
+										},
+										"disk" : {
+											"diskSpace" :  100 ,
+											"backupGenerations" :  2
+										},
+										"ha" : {
+											"optimization" :  "Cost Optimized" ,
+											"diskPct" :  2
+										},
+										"dr" : {
+											"optimization" :  "Cost Optimized" ,
+											"diskPct" :  1
+										}
+									},
+									"sizingRequest" : {
+										"hanaRelease" :  1 ,
+										"hanaMemory" :  100,
+										"sapRelease" :  "6.7",
+				"appSaps" :  1000 ,
+				"tier" :  "2 tier"
+									},
+									"nonProd" : {
+										"envs" : [{
+												"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
+												"hanaMemoryPct" :  200 ,
+												"hosting" :  "HA" , //HA, DR, STAND-ALONE
+												"stressEnvFlag" :  "Y" //Y/N
+											}
+										],
+										"diskPct" :  3
+									}
+								},
+								{
+										"sizingHeader" : {
+											"sizingIdDisplay" :  "SB-32131-08",
+											"sizingId" :  "32131" ,
+											"sizingVersion" :  "01" ,
+											"sizingTimestamp" :  "2015-03-25T12:00:00",
+											"sizingType" :  "new" ,
+											"countryCode" :  "IN" ,
+											"industry" :  "Communications" ,
+											"brandId" :  "1" ,
+											"osId" :  "1" ,
+											"solutionId" :  "Hana DB" ,
+											"growthFactor" : {
+												"pct" :  1 ,
+												"years" :  "2016"
+											},
+											"disk" : {
+												"diskSpace" :  100 ,
+												"backupGenerations" :  2
+											},
+											"ha" : {
+												"optimization" :  "Cost Optimized" ,
+												"diskPct" :  2
+											},
+											"dr" : {
+												"optimization" :  "Cost Optimized" ,
+												"diskPct" :  1
+											}
+										},
+										"sizingRequest" : {
+											"hanaRelease" :  1 ,
+											"hanaMemory" :  100,
+											"sapRelease" :  "6.7",
+											"appSaps" :  1000 ,
+											"tier" :  "2 tier"
+										},
+										"nonProd" : {
+											"envs" : [{
+													"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
+													"hanaMemoryPct" :  200 ,
+													"hosting" :  "HA" , //HA, DR, STAND-ALONE
+													"stressEnvFlag" :  "Y" //Y/N
+												}
+											],
+											"diskPct" :  3
+										}
+									}
+								]
+							});
+						});
 app.delete('/api/teams/:teamId/members/:memberId',function(req,res){
 	res.send({teamId :  1,
 	team :  "TEAM A" ,
