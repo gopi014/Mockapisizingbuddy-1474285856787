@@ -174,8 +174,8 @@ app.get('/api/hana/db/sizings',function(req,res){
 				"osId" :  "Linux" ,
 				"solutionId" :  "Hana DB" ,
 				"growthFactor" : {
-					"pct" :  1 ,
-					"years" :  "2016"
+					"pct" :  "20" ,
+					"years" :  "2"
 				},
 				"disk" : {
 					"diskSpace" :  100 ,
@@ -191,13 +191,13 @@ app.get('/api/hana/db/sizings',function(req,res){
 				}
 			},
 			"sizingRequest" : {
-				"hanaRelease" :  1 ,
+				"hanaRelease" :  "SPS11" ,
 				"hanaMemory" :  100
 			},
 			"nonProd" : {
 				"envs" : [{
 						"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
-						"hanaMemoryPct" :  200 ,
+						"hanaMemoryPct" :  50 ,
 						"hosting" :  "HA" , //HA, DR, STAND-ALONE
 						"stressEnvFlag" :  "Y" //Y/N
 					}
@@ -218,8 +218,8 @@ app.get('/api/hana/db/sizings',function(req,res){
 					"osId" :  "Linux" ,
 					"solutionId" :  "Hana DB" ,
 					"growthFactor" : {
-						"pct" :  1 ,
-						"years" :  "2016"
+						"pct" :  "20" ,
+						"years" :  "2"
 					},
 					"disk" : {
 						"diskSpace" :  100 ,
@@ -235,13 +235,13 @@ app.get('/api/hana/db/sizings',function(req,res){
 					}
 				},
 				"sizingRequest" : {
-					"hanaRelease" :  1 ,
+					"hanaRelease" :  "SPS11" ,
 					"hanaMemory" :  100
 				},
 				"nonProd" : {
 					"envs" : [{
 							"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
-							"hanaMemoryPct" :  200 ,
+							"hanaMemoryPct" :  50 ,
 							"hosting" :  "HA" , //HA, DR, STAND-ALONE
 							"stressEnvFlag" :  "Y" //Y/N
 						}
@@ -262,8 +262,8 @@ app.get('/api/hana/db/sizings',function(req,res){
 						"osId" :  "Linux" ,
 						"solutionId" :  "Hana DB" ,
 						"growthFactor" : {
-							"pct" :  1 ,
-							"years" :  "2016"
+							"pct" :  "20" ,
+							"years" :  "2"
 						},
 						"disk" : {
 							"diskSpace" :  100 ,
@@ -279,13 +279,13 @@ app.get('/api/hana/db/sizings',function(req,res){
 						}
 					},
 					"sizingRequest" : {
-						"hanaRelease" :  1 ,
+						"hanaRelease" :  "SPS11" ,
 						"hanaMemory" :  100
 					},
 					"nonProd" : {
 						"envs" : [{
 								"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
-								"hanaMemoryPct" :  200 ,
+								"hanaMemoryPct" :  50 ,
 								"hosting" :  "HA" , //HA, DR, STAND-ALONE
 								"stressEnvFlag" :  "Y" //Y/N
 							}
@@ -306,8 +306,8 @@ app.get('/api/hana/db/sizings',function(req,res){
 							"osId" :  "Linux" ,
 							"solutionId" :  "Hana DB" ,
 							"growthFactor" : {
-								"pct" :  1 ,
-								"years" :  "2016"
+								"pct" : "20" ,
+								"years" :  "2"
 							},
 							"disk" : {
 								"diskSpace" :  100 ,
@@ -323,13 +323,13 @@ app.get('/api/hana/db/sizings',function(req,res){
 							}
 						},
 						"sizingRequest" : {
-							"hanaRelease" :  1 ,
+							"hanaRelease" :  "SPS11" ,
 							"hanaMemory" :  100
 						},
 						"nonProd" : {
 							"envs" : [{
 									"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
-									"hanaMemoryPct" :  200 ,
+									"hanaMemoryPct" :  50 ,
 									"hosting" :  "HA" , //HA, DR, STAND-ALONE
 									"stressEnvFlag" :  "Y" //Y/N
 								}
@@ -350,8 +350,8 @@ app.get('/api/hana/db/sizings',function(req,res){
 								"osId" :  "Linux" ,
 								"solutionId" :  "Hana DB" ,
 								"growthFactor" : {
-									"pct" :  1 ,
-									"years" :  "2016"
+									"pct" :  "20" ,
+									"years" :  "2"
 								},
 								"disk" : {
 									"diskSpace" :  100 ,
@@ -367,13 +367,13 @@ app.get('/api/hana/db/sizings',function(req,res){
 								}
 							},
 							"sizingRequest" : {
-								"hanaRelease" :  1 ,
+								"hanaRelease" :  "SPS11" ,
 								"hanaMemory" :  100
 							},
 							"nonProd" : {
 								"envs" : [{
 										"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
-										"hanaMemoryPct" :  200 ,
+										"hanaMemoryPct" :  50 ,
 										"hosting" :  "HA" , //HA, DR, STAND-ALONE
 										"stressEnvFlag" :  "Y" //Y/N
 									}
@@ -394,8 +394,8 @@ app.get('/api/hana/db/sizings',function(req,res){
 									"osId" :  "Linux" ,
 									"solutionId" :  "Hana DB" ,
 									"growthFactor" : {
-										"pct" :  1 ,
-										"years" :  "2016"
+										"pct" :  "20" ,
+										"years" :  "2"
 									},
 									"disk" : {
 										"diskSpace" :  100 ,
@@ -411,13 +411,13 @@ app.get('/api/hana/db/sizings',function(req,res){
 									}
 								},
 								"sizingRequest" : {
-									"hanaRelease" :  1 ,
+									"hanaRelease" :  "SPS11" ,
 									"hanaMemory" :  100
 								},
 								"nonProd" : {
 									"envs" : [{
 											"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
-											"hanaMemoryPct" :  200 ,
+											"hanaMemoryPct" :  50 ,
 											"hosting" :  "HA" , //HA, DR, STAND-ALONE
 											"stressEnvFlag" :  "Y" //Y/N
 										}
@@ -438,8 +438,8 @@ app.get('/api/hana/db/sizings',function(req,res){
 										"osId" :  "Linux" ,
 										"solutionId" :  "Hana DB" ,
 										"growthFactor" : {
-											"pct" :  1 ,
-											"years" :  "2016"
+											"pct" :  "20" ,
+											"years" :  "2"
 										},
 										"disk" : {
 											"diskSpace" :  100 ,
@@ -455,13 +455,13 @@ app.get('/api/hana/db/sizings',function(req,res){
 										}
 									},
 									"sizingRequest" : {
-										"hanaRelease" :  1 ,
+										"hanaRelease" :  "SPS11" ,
 										"hanaMemory" :  100
 									},
 									"nonProd" : {
 										"envs" : [{
 												"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
-												"hanaMemoryPct" :  200 ,
+												"hanaMemoryPct" :  50 ,
 												"hosting" :  "HA" , //HA, DR, STAND-ALONE
 												"stressEnvFlag" :  "Y" //Y/N
 											}
@@ -482,8 +482,8 @@ app.get('/api/hana/db/sizings',function(req,res){
 											"osId" :  "Linux" ,
 											"solutionId" :  "Hana DB" ,
 											"growthFactor" : {
-												"pct" :  1 ,
-												"years" :  "2016"
+												"pct" :  "20" ,
+												"years" :  "2"
 											},
 											"disk" : {
 												"diskSpace" :  100 ,
@@ -499,13 +499,13 @@ app.get('/api/hana/db/sizings',function(req,res){
 											}
 										},
 										"sizingRequest" : {
-											"hanaRelease" :  1 ,
+											"hanaRelease" :  "SPS11" ,
 											"hanaMemory" :  100
 										},
 										"nonProd" : {
 											"envs" : [{
 													"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
-													"hanaMemoryPct" :  200 ,
+													"hanaMemoryPct" :  50 ,
 													"hosting" :  "HA" , //HA, DR, STAND-ALONE
 													"stressEnvFlag" :  "Y" //Y/N
 												}
@@ -526,8 +526,8 @@ app.get('/api/hana/db/sizings',function(req,res){
 												"osId" :  "Linux" ,
 												"solutionId" :  "Hana DB" ,
 												"growthFactor" : {
-													"pct" :  1 ,
-													"years" :  "2016"
+													"pct" :  "20" ,
+													"years" :  "2"
 												},
 												"disk" : {
 													"diskSpace" :  100 ,
@@ -543,13 +543,13 @@ app.get('/api/hana/db/sizings',function(req,res){
 												}
 											},
 											"sizingRequest" : {
-												"hanaRelease" :  1 ,
+												"hanaRelease" :  "SPS11" ,
 												"hanaMemory" :  100
 											},
 											"nonProd" : {
 												"envs" : [{
 														"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
-														"hanaMemoryPct" :  200 ,
+														"hanaMemoryPct" :  50 ,
 														"hosting" :  "HA" , //HA, DR, STAND-ALONE
 														"stressEnvFlag" :  "Y" //Y/N
 													}
@@ -570,8 +570,8 @@ app.get('/api/hana/db/sizings',function(req,res){
 													"osId" :  "Linux" ,
 													"solutionId" :  "Hana DB" ,
 													"growthFactor" : {
-														"pct" :  1 ,
-														"years" :  "2016"
+														"pct" :  "20" ,
+														"years" :  "2"
 													},
 													"disk" : {
 														"diskSpace" :  100 ,
@@ -587,13 +587,13 @@ app.get('/api/hana/db/sizings',function(req,res){
 													}
 												},
 												"sizingRequest" : {
-													"hanaRelease" :  1 ,
+													"hanaRelease" :  "SPS11" ,
 													"hanaMemory" :  100
 												},
 												"nonProd" : {
 													"envs" : [{
 															"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
-															"hanaMemoryPct" :  200 ,
+															"hanaMemoryPct" :  50 ,
 															"hosting" :  "HA" , //HA, DR, STAND-ALONE
 															"stressEnvFlag" :  "Y" //Y/N
 														}
@@ -622,8 +622,8 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 				"osId" :  "1" ,
 				"solutionId" :  "Hana DB" ,
 				"growthFactor" : {
-					"pct" :  1 ,
-					"years" :  "2016"
+					"pct" :  "20" ,
+					"years" :  "2"
 				},
 				"disk" : {
 					"diskSpace" :  100 ,
@@ -639,7 +639,7 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 				}
 			},
 			"sizingRequest" : {
-				"hanaRelease" :  1 ,
+				"hanaRelease" :  "SPS11" ,
 				"hanaMemory" :  100,
 				"sapRelease" :  "6.7",
 				"appSaps" :  1000 ,
@@ -648,7 +648,7 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 			"nonProd" : {
 				"envs" : [{
 						"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
-						"hanaMemoryPct" :  200 ,
+						"hanaMemoryPct" :  50 ,
 						"hosting" :  "HA" , //HA, DR, STAND-ALONE
 						"stressEnvFlag" :  "Y" //Y/N
 					}
@@ -669,8 +669,8 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 					"osId" :  "1" ,
 					"solutionId" :  "Hana DB" ,
 					"growthFactor" : {
-						"pct" :  1 ,
-						"years" :  "2016"
+						"pct" :  "20" ,
+						"years" :  "2"
 					},
 					"disk" : {
 						"diskSpace" :  100 ,
@@ -686,7 +686,7 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 					}
 				},
 				"sizingRequest" : {
-					"hanaRelease" :  1 ,
+					"hanaRelease" :  "SPS11" ,
 					"hanaMemory" :  100,
 					"sapRelease" :  "6.7",
 				"appSaps" :  1000 ,
@@ -695,7 +695,7 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 				"nonProd" : {
 					"envs" : [{
 							"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
-							"hanaMemoryPct" :  200 ,
+							"hanaMemoryPct" :  50 ,
 							"hosting" :  "HA" , //HA, DR, STAND-ALONE
 							"stressEnvFlag" :  "Y" //Y/N
 						}
@@ -716,8 +716,8 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 						"osId" :  "1" ,
 						"solutionId" :  "Hana DB" ,
 						"growthFactor" : {
-							"pct" :  1 ,
-							"years" :  "2016"
+							"pct" :  "20" ,
+							"years" :  "2"
 						},
 						"disk" : {
 							"diskSpace" :  100 ,
@@ -733,7 +733,7 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 						}
 					},
 					"sizingRequest" : {
-						"hanaRelease" :  1 ,
+						"hanaRelease" :  "SPS11" ,
 						"hanaMemory" :  100,
 						"sapRelease" :  "6.7",
 				"appSaps" :  1000 ,
@@ -742,7 +742,7 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 					"nonProd" : {
 						"envs" : [{
 								"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
-								"hanaMemoryPct" :  200 ,
+								"hanaMemoryPct" :  50 ,
 								"hosting" :  "HA" , //HA, DR, STAND-ALONE
 								"stressEnvFlag" :  "Y" //Y/N
 							}
@@ -763,8 +763,8 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 							"osId" :  "1" ,
 							"solutionId" :  "Hana DB" ,
 							"growthFactor" : {
-								"pct" :  1 ,
-								"years" :  "2016"
+								"pct" :  "20" ,
+								"years" :  "2"
 							},
 							"disk" : {
 								"diskSpace" :  100 ,
@@ -780,7 +780,7 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 							}
 						},
 						"sizingRequest" : {
-							"hanaRelease" :  1 ,
+							"hanaRelease" :  "SPS11" ,
 							"hanaMemory" :  100,
 							"sapRelease" :  "6.7",
 				"appSaps" :  1000 ,
@@ -789,7 +789,7 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 						"nonProd" : {
 							"envs" : [{
 									"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
-									"hanaMemoryPct" :  200 ,
+									"hanaMemoryPct" :  50 ,
 									"hosting" :  "HA" , //HA, DR, STAND-ALONE
 									"stressEnvFlag" :  "Y" //Y/N
 								}
@@ -810,8 +810,8 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 								"osId" :  "1" ,
 								"solutionId" :  "Hana DB" ,
 								"growthFactor" : {
-									"pct" :  1 ,
-									"years" :  "2016"
+									"pct" :  "20" ,
+									"years" :  "2"
 								},
 								"disk" : {
 									"diskSpace" :  100 ,
@@ -827,7 +827,7 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 								}
 							},
 							"sizingRequest" : {
-								"hanaRelease" :  1 ,
+								"hanaRelease" :  "SPS11" ,
 								"hanaMemory" :  100,
 								"sapRelease" :  "6.7",
 				"appSaps" :  1000 ,
@@ -836,7 +836,7 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 							"nonProd" : {
 								"envs" : [{
 										"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
-										"hanaMemoryPct" :  200 ,
+										"hanaMemoryPct" :  50 ,
 										"hosting" :  "HA" , //HA, DR, STAND-ALONE
 										"stressEnvFlag" :  "Y" //Y/N
 									}
@@ -857,8 +857,8 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 									"osId" :  "1" ,
 									"solutionId" :  "Hana DB" ,
 									"growthFactor" : {
-										"pct" :  1 ,
-										"years" :  "2016"
+										"pct" :  "20" ,
+										"years" :  "2"
 									},
 									"disk" : {
 										"diskSpace" :  100 ,
@@ -874,7 +874,7 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 									}
 								},
 								"sizingRequest" : {
-									"hanaRelease" :  1 ,
+									"hanaRelease" :  "SPS11" ,
 									"hanaMemory" :  100,
 									"sapRelease" :  "6.7",
 				"appSaps" :  1000 ,
@@ -883,7 +883,7 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 								"nonProd" : {
 									"envs" : [{
 											"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
-											"hanaMemoryPct" :  200 ,
+											"hanaMemoryPct" :  50 ,
 											"hosting" :  "HA" , //HA, DR, STAND-ALONE
 											"stressEnvFlag" :  "Y" //Y/N
 										}
@@ -904,8 +904,8 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 										"osId" :  "1" ,
 										"solutionId" :  "Hana DB" ,
 										"growthFactor" : {
-											"pct" :  1 ,
-											"years" :  "2016"
+											"pct" :  "20" ,
+											"years" :  "2"
 										},
 										"disk" : {
 											"diskSpace" :  100 ,
@@ -921,7 +921,7 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 										}
 									},
 									"sizingRequest" : {
-										"hanaRelease" :  1 ,
+										"hanaRelease" :  "SPS11" ,
 										"hanaMemory" :  100,
 										"sapRelease" :  "6.7",
 				"appSaps" :  1000 ,
@@ -930,7 +930,7 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 									"nonProd" : {
 										"envs" : [{
 												"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
-												"hanaMemoryPct" :  200 ,
+												"hanaMemoryPct" :  50 ,
 												"hosting" :  "HA" , //HA, DR, STAND-ALONE
 												"stressEnvFlag" :  "Y" //Y/N
 											}
@@ -951,8 +951,8 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 											"osId" :  "1" ,
 											"solutionId" :  "Hana DB" ,
 											"growthFactor" : {
-												"pct" :  1 ,
-												"years" :  "2016"
+												"pct" :  "20" ,
+												"years" :  "2"
 											},
 											"disk" : {
 												"diskSpace" :  100 ,
@@ -968,7 +968,7 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 											}
 										},
 										"sizingRequest" : {
-											"hanaRelease" :  1 ,
+											"hanaRelease" :  "SPS11" ,
 											"hanaMemory" :  100,
 											"sapRelease" :  "6.7",
 											"appSaps" :  1000 ,
@@ -977,7 +977,7 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 										"nonProd" : {
 											"envs" : [{
 													"envId" :  "DEV" , //DEV, TEST, SANDBOX, PREPROD
-													"hanaMemoryPct" :  200 ,
+													"hanaMemoryPct" :  50 ,
 													"hosting" :  "HA" , //HA, DR, STAND-ALONE
 													"stressEnvFlag" :  "Y" //Y/N
 												}
@@ -1145,12 +1145,12 @@ app.get('/api/hana/db/sizings/:sizingId/:sizingVersion',function(req,res){
 			},
 			"ethPort" :  4 ,
 			"sanPort" :  4 ,
-			"scaling" :  "text" ,
+			"scaling" :  "Scale up" ,
 			"breakup" : [{
-					"envId" :  "HA" ,
+					"envId" :  "Test" ,
 					"components" : [{
 							"componentId" :  "123" ,
-							"component" :  "text" ,
+							"component" :  "HANA DB" ,
 							"lpar" :  "0.12" ,
 							"cores" :  "0.34" ,
 							"memory" :  "200"
@@ -1223,21 +1223,36 @@ app.get('/api/hana/dbapps/sizings/:sizingId/:sizingVersion',function(req,res){
 			},
 			"ethPort" :  4 ,
 			"sanPort" :  4 ,
-			"scaling" :  "text" ,
+			"scaling" :  "Scale up" ,
 			"breakup" : [{
 					"name": "Prod Primary Server Configuration - Breakup",
-					"envId" :  "HA" ,
+					"envId" :  "Test" ,
 					"components" : [{
 							"componentId" :  "123" ,
-							"component" :  "text" ,
+							"component" :  "HANA DB" ,
 							"lpar" :  "0.12" ,
 							"cores" :  "0.34" ,
 							"memory" :  "200"
-						}
+						},
+						{
+								"componentId" :  "1234" ,
+								"component" :  "ECC" ,
+								"lpar" :  "0.12" ,
+								"cores" :  "0.34" ,
+								"memory" :  "200"
+							},
+							{
+									"componentId" :  "1235" ,
+									"component" :  "Total" ,
+									// "lpar" :  "0.12" ,
+									"cores" :  "0.68" ,
+									"memory" :  "400"
+								}
 					]
 				}
 			]
 		}
+
 	]
 })
 });
