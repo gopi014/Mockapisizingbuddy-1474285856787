@@ -1410,7 +1410,22 @@ app.get('/api/hana/dbapps/sizing',function(req,res){
 						lpar :  0.10,
 						cores :  0.20 ,
 						memory :  300
-							}
+							},
+							{
+								"componentId" :  "1234" ,
+								"component" :  "ECC" ,
+								"lpar" :  0.20 ,
+								"cores" :  0.30 ,
+								"memory" :  200
+							},
+							{
+									"componentId" :  "1235" ,
+									"component" :  "Total" ,
+									// "lpar" :  "0.12" ,
+									"cores" :  0.50 ,
+									"memory" :  500
+								}
+							
 						]
 					}
 				]
@@ -1438,9 +1453,23 @@ app.get('/api/hana/dbapps/sizing',function(req,res){
 						componentId : "12345",
 						component :  "HANA DB",
 						lpar :  0.23,
-						cores :  0.45 ,
+						cores :  0.40 ,
 						memory :  250
-							}
+							},
+							{
+								"componentId" :  "1234" ,
+								"component" :  "ECC" ,
+								"lpar" :  0.12 ,
+								"cores" :  0.40 ,
+								"memory" :  200
+							},
+							{
+									"componentId" :  "1235" ,
+									"component" :  "Total" ,
+									// "lpar" :  "0.12" ,
+									"cores" :  0.80 ,
+									"memory" :  450
+								}
 						]
 					}
 				]
@@ -1470,7 +1499,21 @@ app.get('/api/hana/dbapps/sizing',function(req,res){
 						lpar :  0.23,
 						cores :  0.45 ,
 						memory :  250
-							}
+							},
+							{
+								"componentId" :  "1234" ,
+								"component" :  "ECC" ,
+								"lpar" :  0.12 ,
+								"cores" :  0.34 ,
+								"memory" :  200
+							},
+							{
+									"componentId" :  "1235" ,
+									"component" :  "Total" ,
+									// "lpar" :  "0.12" ,
+									"cores" :  0.79 ,
+									"memory" :  "450"
+								}
 						]
 					}
 				]
@@ -1500,7 +1543,21 @@ app.get('/api/hana/dbapps/sizing',function(req,res){
 						lpar :  0.23,
 						cores :  0.45 ,
 						memory :  250
-							}
+							},
+							{
+								"componentId" :  "1234" ,
+								"component" :  "ECC" ,
+								"lpar" :  0.12 ,
+								"cores" :  0.34 ,
+								"memory" :  200
+							},
+							{
+									"componentId" :  "1235" ,
+									"component" :  "Total" ,
+									// "lpar" :  "0.12" ,
+									"cores" :  0.79 ,
+									"memory" :  450
+								}
 						]
 					}
 				]
