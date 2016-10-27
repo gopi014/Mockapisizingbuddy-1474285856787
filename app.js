@@ -1277,7 +1277,7 @@ app.get('/api/hana/db/sizing',function(req,res){
 						envId : "Test" ,
 						components : [{
 						componentId : "12345",
-						component :  "sample",
+						component :  "HANA DB",
 						lpar :  0.23,
 						cores :  0.45 ,
 						memory :  250
@@ -1307,7 +1307,7 @@ app.get('/api/hana/db/sizing',function(req,res){
 						envId : "Test" ,
 						components : [{
 						componentId : "12345",
-						component :  "sample",
+						component :  "HANA DB",
 						lpar :  0.23,
 						cores :  0.45 ,
 						memory :  250
@@ -1337,7 +1337,7 @@ app.get('/api/hana/db/sizing',function(req,res){
 						envId : "Test" ,
 						components : [{
 						componentId : "12345",
-						component :  "sample",
+						component :  "HANA DB",
 						lpar :  0.23,
 						cores :  0.45 ,
 						memory :  250
@@ -1367,7 +1367,7 @@ app.get('/api/hana/db/sizing',function(req,res){
 						envId : "Test" ,
 						components : [{
 						componentId : "12345",
-						component :  "sample",
+						component :  "HANA DB",
 						lpar :  0.23,
 						cores :  0.45 ,
 						memory :  250
@@ -1383,5 +1383,135 @@ app.get('/api/hana/db/sizing',function(req,res){
 
 	})
 });
+
+
+app.get('/api/hana/dbapps/sizing',function(req,res){
+	res.send({
+	  sizingResults : [{
+	siteId :  "HA", //PROD, HA, DR, STAND-ALONE
+	sizingChoices : [{
+		modelId :  "67890",
+		modelDisplay : "E489-01OIL",
+		cpu : "90",
+		cores :"20" ,
+		memory :"100" ,
+			storage : {
+				ssd :  2 ,
+				hdd :  2
+				},
+				ethPort :  "50" ,
+				sanPort :  "20" ,
+				scaling :  "Scale up" ,
+					breakup : [{
+						envId : "Test" ,
+						components : [{
+						componentId : "12345",
+						component :  "HANA DB",
+						lpar :  0.10,
+						cores :  0.20 ,
+						memory :  300
+							}
+						]
+					}
+				]
+			}
+		]
+	  },
+		{
+	siteId :  "PROD", //PROD, HA, DR, STAND-ALONE
+	sizingChoices : [{
+		modelId :  "67890",
+		modelDisplay : "E489-01OIT",
+		cpu : "90",
+		cores :"20" ,
+		memory :"100" ,
+			storage : {
+				ssd : 2 ,
+				hdd :  2
+				},
+				ethPort :  "50" ,
+				sanPort :  "20" ,
+				scaling :  "Scale up" ,
+					breakup : [{
+						envId : "Test" ,
+						components : [{
+						componentId : "12345",
+						component :  "HANA DB",
+						lpar :  0.23,
+						cores :  0.45 ,
+						memory :  250
+							}
+						]
+					}
+				]
+			}
+		]
+	  },
+{
+	siteId :  "DR", //PROD, HA, DR, STAND-ALONE
+	sizingChoices : [{
+		modelId :  "67890",
+		modelDisplay : "E489-01OIJ",
+		cpu : "90",
+		cores :"20" ,
+		memory :"100" ,
+			storage : {
+				ssd :  2 ,
+				hdd :  2
+				},
+				ethPort :  "50" ,
+				sanPort :  "20" ,
+				scaling :  "Scale up" ,
+					breakup : [{
+						envId : "Test" ,
+						components : [{
+						componentId : "12345",
+						component :  "HANA DB",
+						lpar :  0.23,
+						cores :  0.45 ,
+						memory :  250
+							}
+						]
+					}
+				]
+			}
+		]
+	  },
+{
+	siteId :  "STAND-ALONE", //PROD, HA, DR, STAND-ALONE
+	sizingChoices : [{
+		modelId :  "67890",
+		modelDisplay : "E489-01OIG",
+		cpu : "90",
+		cores :"20" ,
+		memory :"100" ,
+			storage : {
+				ssd :  2 ,
+				hdd :  2
+				},
+				ethPort :  "50" ,
+				sanPort :  "20" ,
+				scaling :  "Scale up" ,
+					breakup : [{
+						envId : "Test" ,
+						components : [{
+						componentId : "12345",
+						component :  "HANA DB",
+						lpar :  0.23,
+						cores :  0.45 ,
+						memory :  250
+							}
+						]
+					}
+				]
+			}
+		]
+	  }
+	 ]
+
+
+	})
+});
+
 app.listen(port);
 console.log('app is listening to http://localhost:' + port);
