@@ -155,7 +155,7 @@ app.delete('/api/teams/:teamId',function(req,res){
 });
 //4. API to get Sizing Properties
 app.get('/api/hana/properties',function(req,res){
-	res.send('{ "hanaProps" : { "minMemory" : 5 , "maxMemory" : 20 , "minSaps" :  "01" , "maxSaps" :  "1000" , "storageFactor" : "2" , "hanaReleases" : ["SPS11"], "sapReleases" : ["6.7"]} , "industries" : [ "Communications" ], "countries" : [{ "countryCode" : "IN" , "country" : "INDIA" }]}');
+	res.send('{ "hanaProps" : { "minMemory" : 5 , "maxMemory" : 20 , "minSaps" :  1 , "maxSaps" :  1000 , "storageFactor" : "2" , "hanaReleases" : ["SPS11"], "sapReleases" : ["6.7"]} , "industries" : [ "Communications" ], "countries" : [{ "countryCode" : "IN" , "country" : "INDIA" }]}');
 });
 //5.API to search HANA DB Sizings
 app.get('/api/hana/db/sizings',function(req,res){
@@ -643,7 +643,7 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 				"hanaMemory" :  100,
 				"sapRelease" :  "6.7",
 				"appSaps" :  1000 ,
-				"tier" :  "2 tier"
+				"tier" :  "2 Tier"
 			},
 			"nonProd" : {
 				"envs" : [{
@@ -690,7 +690,7 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 					"hanaMemory" :  100,
 					"sapRelease" :  "6.7",
 				"appSaps" :  1000 ,
-				"tier" :  "2 tier"
+				"tier" :  "2 Tier"
 				},
 				"nonProd" : {
 					"envs" : [{
@@ -737,7 +737,7 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 						"hanaMemory" :  100,
 						"sapRelease" :  "6.7",
 				"appSaps" :  1000 ,
-				"tier" :  "2 tier"
+				"tier" :  "2 Tier"
 					},
 					"nonProd" : {
 						"envs" : [{
@@ -784,7 +784,7 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 							"hanaMemory" :  100,
 							"sapRelease" :  "6.7",
 				"appSaps" :  1000 ,
-				"tier" :  "2 tier"
+				"tier" :  "2 Tier"
 						},
 						"nonProd" : {
 							"envs" : [{
@@ -831,7 +831,7 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 								"hanaMemory" :  100,
 								"sapRelease" :  "6.7",
 				"appSaps" :  1000 ,
-				"tier" :  "2 tier"
+				"tier" :  "2 Tier"
 							},
 							"nonProd" : {
 								"envs" : [{
@@ -878,7 +878,7 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 									"hanaMemory" :  100,
 									"sapRelease" :  "6.7",
 				"appSaps" :  1000 ,
-				"tier" :  "2 tier"
+				"tier" :  "2 Tier"
 								},
 								"nonProd" : {
 									"envs" : [{
@@ -925,7 +925,7 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 										"hanaMemory" :  100,
 										"sapRelease" :  "6.7",
 				"appSaps" :  1000 ,
-				"tier" :  "2 tier"
+				"tier" :  "2 Tier"
 									},
 									"nonProd" : {
 										"envs" : [{
@@ -972,7 +972,7 @@ app.get('/api/hana/dbapps/sizings',function(req,res){
 											"hanaMemory" :  100,
 											"sapRelease" :  "6.7",
 											"appSaps" :  1000 ,
-											"tier" :  "2 tier"
+											"tier" :  "2 Tier"
 										},
 										"nonProd" : {
 											"envs" : [{
@@ -1196,8 +1196,8 @@ app.get('/api/hana/dbapps/sizings/:sizingId/:sizingVersion',function(req,res){
 		"hanaRelease" :  "SPS11" ,
 		"hanaMemory" :  200,
 		"sapRelease" :"6.7",
-		"appSaps":1001,
-		"tier":"2 tier"
+		"appSaps":1000,
+		"tier":"2 Tier"
 	},
 	"nonProd" : {
 		"envs" : [{
@@ -1410,22 +1410,20 @@ app.get('/api/hana/dbapps/sizing',function(req,res){
 						lpar :  0.10,
 						cores :  0.20 ,
 						memory :  300
-							},
-							{
-								"componentId" :  "1234" ,
-								"component" :  "ECC" ,
-								"lpar" :  0.20 ,
-								"cores" :  0.30 ,
-								"memory" :  200
-							},
-							{
-									"componentId" :  "1235" ,
-									"component" :  "Total" ,
-									// "lpar" :  "0.12" ,
-									"cores" :  0.50 ,
-									"memory" :  500
-								}
-							
+					},{
+							"componentId" :  "1234" ,
+							"component" :  "ECC" ,
+							"lpar" :  "0.12" ,
+							"cores" :  "0.34" ,
+							"memory" :  "200"
+						},
+						{
+								"componentId" :  "1235" ,
+								"component" :  "Total" ,
+								// "lpar" :  "0.12" ,
+								"cores" :  "0.68" ,
+								"memory" :  "400"
+							}
 						]
 					}
 				]
@@ -1453,23 +1451,22 @@ app.get('/api/hana/dbapps/sizing',function(req,res){
 						componentId : "12345",
 						component :  "HANA DB",
 						lpar :  0.23,
-						cores :  0.40 ,
+						cores :  0.45 ,
 						memory :  250
-							},
-							{
-								"componentId" :  "1234" ,
-								"component" :  "ECC" ,
-								"lpar" :  0.12 ,
-								"cores" :  0.40 ,
-								"memory" :  200
-							},
-							{
-									"componentId" :  "1235" ,
-									"component" :  "Total" ,
-									// "lpar" :  "0.12" ,
-									"cores" :  0.80 ,
-									"memory" :  450
-								}
+					},{
+							"componentId" :  "1234" ,
+							"component" :  "ECC" ,
+							"lpar" :  "0.12" ,
+							"cores" :  "0.34" ,
+							"memory" :  "200"
+						},
+						{
+								"componentId" :  "1235" ,
+								"component" :  "Total" ,
+								// "lpar" :  "0.12" ,
+								"cores" :  "0.68" ,
+								"memory" :  "400"
+							}
 						]
 					}
 				]
@@ -1499,21 +1496,20 @@ app.get('/api/hana/dbapps/sizing',function(req,res){
 						lpar :  0.23,
 						cores :  0.45 ,
 						memory :  250
-							},
-							{
-								"componentId" :  "1234" ,
-								"component" :  "ECC" ,
-								"lpar" :  0.12 ,
-								"cores" :  0.34 ,
-								"memory" :  200
-							},
-							{
-									"componentId" :  "1235" ,
-									"component" :  "Total" ,
-									// "lpar" :  "0.12" ,
-									"cores" :  0.79 ,
-									"memory" :  "450"
-								}
+					},{
+							"componentId" :  "1234" ,
+							"component" :  "ECC" ,
+							"lpar" :  "0.12" ,
+							"cores" :  "0.34" ,
+							"memory" :  "200"
+						},
+						{
+								"componentId" :  "1235" ,
+								"component" :  "Total" ,
+								// "lpar" :  "0.12" ,
+								"cores" :  "0.68" ,
+								"memory" :  "400"
+							}
 						]
 					}
 				]
@@ -1543,21 +1539,20 @@ app.get('/api/hana/dbapps/sizing',function(req,res){
 						lpar :  0.23,
 						cores :  0.45 ,
 						memory :  250
-							},
-							{
-								"componentId" :  "1234" ,
-								"component" :  "ECC" ,
-								"lpar" :  0.12 ,
-								"cores" :  0.34 ,
-								"memory" :  200
-							},
-							{
-									"componentId" :  "1235" ,
-									"component" :  "Total" ,
-									// "lpar" :  "0.12" ,
-									"cores" :  0.79 ,
-									"memory" :  450
-								}
+					},{
+							"componentId" :  "1234" ,
+							"component" :  "ECC" ,
+							"lpar" :  "0.12" ,
+							"cores" :  "0.34" ,
+							"memory" :  "200"
+						},
+						{
+								"componentId" :  "1235" ,
+								"component" :  "Total" ,
+								// "lpar" :  "0.12" ,
+								"cores" :  "0.68" ,
+								"memory" :  "400"
+							}
 						]
 					}
 				]
